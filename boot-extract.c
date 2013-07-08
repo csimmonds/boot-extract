@@ -47,9 +47,9 @@ int main(int argc, char **argv)
 	unsigned int flash_page_size = 2048;
 	struct boot_img_hdr hdr;
 
-	if (argc < 1) {
-		printf("Android boot image extraction tool v1.0\n");
-		printf("Copyright (C) 2012 Chris Simmonds\n");
+	if (argc < 2) {
+		printf("\nAndroid boot image extraction tool v1.0\n");
+		printf("Copyright (C) 2012 Chris Simmonds\n\n");
 		printf("Usage %s <boot or recovery image file>\n", argv[0]);
 		return 1;
 	}
