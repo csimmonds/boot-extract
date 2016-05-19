@@ -32,7 +32,7 @@
 /* bootimg.h is copied from AOSP:
    Jelly Bean/4.2:
     system/core/mkbootimg/bootimg.h
-   Earier releases:
+   Earlier releases:
     bootable/bootloader/legacy/include/boot/bootimg.h
 */
 #include "bootimg.h"
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
 	if (argc < 2) {
 		printf("\nAndroid boot image extraction tool v1.0\n");
-		printf("Copyright (C) 2012 Chris Simmonds\n\n");
+		printf("Copyright (C)2012,2016 Chris Simmonds\n\n");
 		printf("Usage %s <boot or recovery image file>\n", argv[0]);
 		return 1;
 	}
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 	}
 
 	if (strncmp((const char *)hdr.magic, BOOT_MAGIC, BOOT_MAGIC_SIZE) != 0) {
-		printf("Boot magic missing: not a valid boot iamge\n");
+		printf("Boot magic missing or corrupt: not a valid boot image\n");
 		return 1;
 	}
 
@@ -77,11 +77,16 @@ int main(int argc, char **argv)
 	       "  kernel load addr\t0x%x\n"
 	       "  ramdisk size\t\t0x%x\n"
 	       "  ramdisk load addr\t0x%x\n"
-	       "  name\t\t%s\n"
-	       "  cmdline\t\t%s\n",
+	       "  second size\t\t0x%x\n"
+	       "  second load addr\t0x%x\n"
+	       "  tags addr\t\t0x%x\n"
+	       "  product name\t\t'%s'\n"
+	       "  kernel cmdline\t'%s'\n\n",
 	       hdr.page_size,
 	       hdr.kernel_size, hdr.kernel_addr,
-	       hdr.ramdisk_size, hdr.ramdisk_addr, hdr.name, hdr.cmdline);
+	       hdr.ramdisk_size, hdr.ramdisk_addr,
+	       hdr.second_size, hdr.second_addr,
+	       hdr.tags_addr, hdr.name, hdr.cmdline);
 
 	flash_page_size = hdr.page_size;
 	if (hdr.kernel_size > 0) {
