@@ -43,7 +43,7 @@ static void usage(char *prog)
 {
 	printf("\nAndroid boot image extraction tool v1.1\n"
 	       "Copyright (C)2012,2016 Chris Simmonds\n\n"
-	       "Usage %s <-i> [boot or recovery image file}\n"
+	       "Usage %s <-i> [boot or recovery image file]\n"
 	       "    -i   information only: do not extract images\n", prog);
 	exit(1);
 }
