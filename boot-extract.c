@@ -167,7 +167,7 @@ int main(int argc, char **argv)
 			printf ("Error in read\n");
 			return 1;
 		}
-		write(fk, buf, hdr.ramdisk_size);
+		write(fr, buf, hdr.ramdisk_size);
 		free(buf);
 		close(fr);
 		printf("ramdisk.cpio.gz extracted\n");
@@ -198,7 +198,7 @@ int main(int argc, char **argv)
 			printf ("Error in read\n");
 			return 1;
 		}
-		write(fk, buf, hdr.second_size);
+		write(fr, buf, hdr.second_size);
 		free(buf);
 		close(fr);
 		printf("second.dtb extracted\n");
